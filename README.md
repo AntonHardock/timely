@@ -9,6 +9,6 @@ The primary goal is to apply and deepen my knowledge of basic web development wh
 
 The secondary goal is to create an app that my coworkers can use to aggregate time tracking data from multiple sources, facilitating the cost accounting in SAP.
 
-While development is (mostly) approached as if the program was a web-app, the intended distribution is a local executable. As the data processed and stored by the application is sensitive, a productive deployment would require identity and access management. This is out of scope for this project. Rather, a local executable created with pyinstaller is the intended distribution.
+While development is (mostly) approached as if the program was a web-app, the intended distribution is a local executable. As the data processed and stored by the application is sensitive, a productive deployment would require identity and access management, which is out of scope for this project.
 
 For now, the imported data is assumed to be in German.
