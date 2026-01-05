@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+
+{% block inside_main %}
+
+<div class="import-summary">
+
+    <h1>File import summary</h1>
+    <p>Imported data in timespan: {{ min_date }} to {{ max_date }}</p>
+
+    <hr>
+
+    <h2>Arbeitszeiten</h2>
+    <p>{{ ezeit_msg }}</p>
+
+    <hr>
+
+    <h2>Events</h2>
+    <p>{{ event_msg }}</p>
+
+</div>
+
+{% endblock inside_main %}

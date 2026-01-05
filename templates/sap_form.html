@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+
+{% block inside_main %}
+
+<div class="generic-form-container">
+    <form class="generic-form" action="/sap/monthly_report" method="get">
+        <h1>SAP cost accounting report</h1>
+        {% include "_required_inputs_note.html" %}
+        <section>
+            {% include "_year_and_month_inputs.html" %}
+        </section>
+        <section>
+            <h2>Options</h2>
+            <p>
+                <label for="decimal_hours">Export decimal hours (default)</label>
+                <input type="checkbox" id="decimal_hours" name="decimal_hours" value="true" checked/>
+            </p>
+        </section>
+        <section>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </section>
+    </form>
+</div>
+
+{% endblock inside_main %}

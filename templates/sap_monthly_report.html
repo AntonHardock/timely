@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+
+{% block inside_main %}
+
+{% if empty_data %}
+<div class="generic-user-note">
+    <h1>No data</h1>
+    <p>It appears that no data exists for timespan {{from_date}} to {{to_date}}</p>
+</div>
+{% endif %}
+
+{% for table in tables %}
+<table class="sap-report-table">
+    <thead>
+        <tr>
+            <th colspan="{{ table.colspan }}">{{ table.title }}</th>
+        </tr>
+        <tr>
+            <th>Row Name</th>
+            {% for date in table.dates %}
+                <th>{{ date }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in table.rows %}
+        <tr{% if row.highlighted %} class="highlighted-row"{% endif %}>
+            <td>{{ row.label }}</td>
+            {% for value in row['values'] %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+
+{% endblock inside_main %}

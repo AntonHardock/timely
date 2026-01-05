@@ -1,0 +1,27 @@
+{
+    "database_name": "mytime_test.sqlite3",
+    "database_path": "C:/Users/anton/OneDrive/DS/coding/timely",
+    "run_in_dev_mode": true,
+    "cost_units": {
+        "default_cost_unit": {
+            "label": "UDP",
+            "outlook": ["outlook_default"],
+            "kapow": []
+        },
+        "overhead": {
+            "label": "Organizational overhead costs",
+            "outlook": ["routine", "gemeinkosten"],
+            "kapow": []
+        },
+        "mrh": {
+            "label": "MRH",
+            "outlook": ["mrh"],
+            "kapow": ["mrh"]
+        },
+        "cut": {
+            "label": "CUT",
+            "outlook": ["cut"],
+            "kapow": ["dinspec_91377"]
+        }
+    }
+}

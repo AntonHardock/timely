@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Timely</title>
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        {% include "_navigation_menu.html" %}
+    </header>
+    <main>
+    {% block inside_main %}
+        <div class="homepage-content">
+            <p>Book your time in no time! </p>
+            <pre>
+
+             O
+            (_)
+          _ )_( _
+        /`_) H (_`\
+      .' (  { }  ) '.
+    _/ /` '-'='-' `\ \_
+   [_.'   _,...,_   '._]
+    |   .:"`````":.   |
+    |__//_________\\__|
+     | .-----------. |
+     | |  .-"""-.  | |
+     | | /    /  \ | |
+     | ||-   <   -|| |
+     | | \    \  / | |
+     | |[`'-...-'`]| |
+     | | ;-.___.-; | |
+     | | |  |||  | | |
+     | | |  |||  | | |
+     | | |  |||  | | |
+     | | |  |||  | | |
+     | | |  |||  | | |
+     | | | _|||_ | | |
+     | | | >===< | | |
+     | | | |___| | | |
+     | | |  |||  | | |
+     | | |  ;-;  | | |
+     | | | (   ) | | |
+     | | |  '-'  | | |
+     | | '-------' | |
+    _| '-----------' |_
+   [= === === ==== == =]
+   [__--__--___--__--__]
+  /__-___-___-___-___-__\
+ `"""""""""""""""""""""""`
+            </pre>
+            <p>https://www.asciiart.eu/electronics/clocks</p>
+        </div>
+    {% endblock inside_main %}
+    </main>
+    <footer></footer>
+</body>
+</html>

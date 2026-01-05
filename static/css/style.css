@@ -1,0 +1,388 @@
+/* Global Defaults */
+
+* {
+    margin: 0;
+    overscroll-behavior:none;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+/* Primitives */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: #413e3e;
+}
+
+footer {
+    height: 70px;
+    background-color: #413e3e;
+}
+
+body {
+    min-height: 100vh; /*https://stackoverflow.com/questions/2744690/preventing-fixed-footer-from-overlapping-content#44657664*/
+    display: flex; flex-direction: column;
+    margin: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
+svg {
+    display: block;
+}
+
+/* Navbar */
+
+nav {
+    display: flex; justify-content: space-between;
+    width:100vw;
+}
+
+.logo {
+    position: relative;
+    bottom: 4px;
+    height: 60px;
+}
+
+.logo-title {
+    display: block;
+    text-align: left;
+    font-size: 1.4rem;
+    font-family: "Lucida Handwriting";
+    color:rgb(227, 221, 221);
+    padding-left: 10%;
+}
+
+.nav-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    fill: rgb(227, 221, 221);
+    stroke: rgb(227, 221, 221);
+    stroke-width: 0%;
+}
+
+.nav-icon:hover {
+    background-color: #ffffff;
+}
+
+/* Homepage content */
+
+.homepage-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    align-items: center; /* Center children horizontally */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Generic Containers */
+
+.container-left {
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+} 
+
+.container-right {
+    align-items: center;
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+}
+
+.container-even {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px;
+}
+
+/* Styling for page indicating not-implemented functionality */
+
+.generic-user-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+
+/* Container for year and month select */
+
+.year-month-select {
+    display: flex;
+    justify-content: left;
+}
+
+.year-month-select p {
+    padding-inline-end: 1em;
+}
+
+/* File Import Form */
+
+.generic-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e0eaff 0%, #f8fafc 100%);
+    border-radius: 1em;
+    box-shadow: 0 2px 16px rgba(64, 64, 128, 0.07);
+    margin: 1em auto;
+    padding: 1em;
+    max-width: 500px;
+    width: 100%;
+}
+
+.generic-form {
+    background: #fff;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.08);
+    padding: 1em 1.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.generic-form h1 {
+    font-size: 1.5em;
+    color: #2a3a5e;
+    font-weight: 600;
+}
+
+.generic-form h2 {
+    font-size: 1.1em;
+    color: #357ab8;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+}
+
+.generic-form p {
+    color: #4a4a4a;
+    font-size: 1em;
+    margin-bottom: 0.2em;
+}
+
+.generic-form section {
+    margin-bottom: 0.5em;
+}
+
+.generic-form section p {
+    margin-top: 1em;
+}
+
+.generic-form label {
+    font-weight: 500;
+    color: #2a3a5e;
+    margin-bottom: 0.3em;
+    display: block;
+}
+
+.generic-form input[type="file"] {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #b0b8d1;
+    border-radius: 0.5em;
+    background: #f5f7fa;
+    font-size: 1em;
+    width: 100%;
+}
+
+.generic-form input[type="number"],
+.generic-form select {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #b0b8d1;
+    border-radius: 0.5em;
+    background: #f5f7fa;
+    font-size: 1em;
+    margin-bottom: 0.7em;
+    transition: border-color 0.2s;
+}
+
+.generic-form input[type="number"]:focus,
+.generic-form select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.generic-form input[type="checkbox"] {
+    accent-color: #4a90e2;
+    margin-right: 0.5em;
+    transform: scale(1.2);
+}
+
+.generic-form button[type="submit"] {
+    background: linear-gradient(90deg, #4a90e2 0%, #357ab8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.8em 2em;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.08);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.generic-form button[type="submit"]:hover {
+    background: linear-gradient(90deg, #357ab8 0%, #4a90e2 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* SAP Report Table */
+
+.sap-report-table {
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 1em;
+    box-shadow: 0 2px 16px rgba(64, 64, 128, 0.07);
+    overflow: hidden;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.sap-report-table thead tr:first-child th {
+    background: #e0eaff;
+    color: #2a3a5e;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-bottom: 2px solid #b0b8d1;
+    text-align: center;
+    padding: 1em 0.5em;
+}
+
+.sap-report-table thead tr:nth-child(2) th {
+    background: #f5f7fa;
+    color: #357ab8;
+    font-weight: 500;
+    border-bottom: 1px solid #e0eaff;
+    text-align: center;
+    padding: 0.7em 0.5em;
+}
+
+.sap-report-table tbody td {
+    padding: 0.7em 0.5em;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+    color: #2a3a5e;
+    font-size: 1em;
+}
+
+.sap-report-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sap-report-table th,
+.sap-report-table td {
+    min-width: 80px;
+}
+
+.sap-report-table tr:hover td {
+    background: #f0f6ff;
+    transition: background 0.2s;
+}
+
+.sap-report-table td:first-child {
+    font-weight: bold;
+    text-align: left;
+}
+
+.highlighted-row {
+    background-color: #d2f8d2 !important;
+}
+
+
+/* Import Preview Styles */
+.import-summary { 
+    margin: 1em auto; 
+    max-width: 800px; 
+}
+.import-summary p {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.import-summary h2 { 
+    margin-top: 1em; 
+}
+.import-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.import-table {
+    max-width: 100%;
+    width: max-content;
+    margin-bottom: 2em; 
+
+}
+
+.import-table th, .import-table td { 
+    border: 1px solid #e0eaff; 
+    padding: 0.5em 1em; 
+    text-align: left; 
+}
+
+.import-table th { 
+    background: #e0eaff; 
+}
+
+.import-table tr:nth-child(even) { 
+    background: #f8fafc; 
+}
+
+details { 
+    margin-bottom: 1.5em; 
+}
+
+summary { 
+    cursor: pointer; 
+    font-weight: bold; 
+    color: #357ab8; 
+}
+
+.sample-table { 
+    margin-bottom: 1em; 
+}
+
+.row-count { 
+    font-weight: bold; 
+}
+
+.button-row { 
+    margin: 1em 0; 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.confirm-btn, .reject-btn { 
+    padding: 0.7em 1.5em; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+.confirm-btn { 
+    background-color: #4CAF50; 
+    color: white; 
+}
+
+.reject-btn { 
+    background-color: #f44336; 
+    color: white; 
+}

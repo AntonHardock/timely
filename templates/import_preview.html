@@ -1,0 +1,90 @@
+{% extends "home.html" %}
+
+{% block inside_main %}
+
+<div class="import-summary">
+
+    <h1>File import preview</h1>
+    <p>Imported data in timespan: {{ min_date }} to {{ max_date }}</p>
+    
+    <div class="button-row">
+        <form method="get" action="/import_files/confirmed" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="cache_id" value="{{ cache_id }}">
+            <input type="hidden" name="min_date" value="{{ min_date }}">
+            <input type="hidden" name="max_date" value="{{ max_date }}">
+            <button type="submit" class="confirm-btn">Confirm</button>
+        </form>
+        <form method="get" action="/import_files/rejected" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="cache_id" value="{{ cache_id }}">
+            <input type="hidden" name="min_date" value="{{ min_date }}">
+            <input type="hidden" name="max_date" value="{{ max_date }}">
+            <button type="submit" class="reject-btn">Cancel</button>
+        </form>
+    </div>
+
+    {% for view in table_views %}
+
+        <hr>
+        <h2>{{ view.label }}: <span class="row-count">{{ view.row_count }} rows</span></h2>
+
+        {% if view.rows|length > 0 %}
+
+        <p>Random sample (up to 3 entries):</p>
+        <div class="import-table-wrapper">
+            <table class="import-table sample-table">
+                <thead>
+                    <tr>
+                        {% for key in view.samples[0].keys() %}
+                            <th>{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in view.samples %}
+                    <tr>
+                        {% for key in row.keys() %}
+                            <td>{{ row[key] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <details>
+            <summary>View all imported data</summary>
+            <div class="import-table-wrapper">
+                <table class="import-table">
+                    <thead>
+                        <tr>
+                            {% for key in view.rows[0].keys() %}
+                                <th>{{ key }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in view.rows %}
+                        <tr>
+                            {% for key in row.keys() %}
+                                <td>
+                                    {{ row[key] }} 
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+        {% else %}
+
+        <p>{{view.label}} does not contain relevant data points for given timespan. 
+            Check the contents of the corresponding import-file if this is unexpected.
+        </p>
+
+        {% endif %}
+
+    {% endfor %}
+</div>
+
+{% endblock inside_main %}

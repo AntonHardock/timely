@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+
+{% block inside_main %}
+
+<div class="generic-form-container">
+    <form class="generic-form"  method="post" action="/api/import_files/parse" enctype="multipart/form-data">
+        <h1>Import booked times and events</h1>
+        {% include "_required_inputs_note.html" %}
+        <section>
+            {% include "_year_and_month_inputs.html" %}
+        </section>
+        <section>
+            <h2>Booked times from EZeit</h2>
+            <p>
+                <label for="ezeit">EZeit monthly report
+                    <strong><span aria-label="required">*</span></strong>
+                </label>
+                <input type="file" id="ezeit" name="ezeit" accept=".csv" />
+            </p>
+            <h2>Events from Outlook</h2>
+            <p>
+                <label for="outlook">Outlook calendar export
+                    <strong><span aria-label="required">*</span></strong>
+                </label>
+                <input type="file" id="outlook" name="outlook" accept=".csv" />
+            </p>
+            <h2>Events from Kapow</h2>
+            <p>
+                <label for="kapow">Kapow database</label>
+                <input type="file" id="kapow" name="kapow" accept=".xml" />
+            </p>
+        </section>
+        <section>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </section>
+    </form>
+</div>
+
+{% endblock inside_main %}
