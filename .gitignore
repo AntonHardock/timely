@@ -5,6 +5,8 @@
 /data
 /klr_old
 /my_docs
+/dist
+/build
 *.sqlite3
 *.sqlite
 *.sqbpro
