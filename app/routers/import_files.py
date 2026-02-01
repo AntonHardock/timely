@@ -10,7 +10,6 @@ from app.parsers.ezeit_parser import parse_working_hours, EZEIT_ERROR
 from app.parsers.outlook_parser import parse_calendar_events, OUTLOOK_ERROR
 from app.parsers.kapow_parser import parse_kapow_sessions, KAPOW_ERROR
 from app.models import EZeitDay, Event
-from app.parsers.exceptions import ColumnsError, DateRangeError, TimeFormatError
 from lxml import etree
 from app.database import db
 from pydantic import ValidationError
@@ -44,7 +43,7 @@ def parse(
         ezeit.file.seek(0)
         try:
             ezeit_data = parse_working_hours(ezeit.file, month=month, year=year)
-        except (ColumnsError, DateRangeError, TimeFormatError, ValidationError) as exc:
+        except (ValueError, KeyError, ValidationError) as exc:
             detail = exc.errors() if isinstance(exc, ValidationError) else str(exc)
             raise HTTPException(status_code=422, detail=detail)
         db.cache_data(EZeitDay, ezeit_data, cache_id, timestamp)
@@ -56,7 +55,7 @@ def parse(
         outlook.file.seek(0)
         try:
             outlook_data = parse_calendar_events(outlook.file, min_date, max_date)
-        except (ColumnsError, ValidationError) as exc:
+        except (ValueError, ValidationError) as exc:
             detail = exc.errors() if isinstance(exc, ValidationError) else str(exc)
             raise HTTPException(status_code=422, detail=detail)
         db.cache_data(Event, outlook_data, cache_id, timestamp)
