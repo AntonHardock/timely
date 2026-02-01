@@ -1,7 +1,6 @@
 {
     "database_name": "mytime_test.sqlite3",
     "database_path": "./db",
-    "run_in_dev_mode": true,
     "cost_units": {
         "default_cost_unit": {
             "label": "UDP",

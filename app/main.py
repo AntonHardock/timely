@@ -48,28 +48,18 @@ app.include_router(frontend.router)
 
 if __name__ == "__main__":
     
-    if CONFIG.run_in_dev_mode == True:
+    cwd = Path(__file__).parent
+    html_templates = cwd / "templates"
+    static_files = cwd / "static"
 
-        cwd = Path(__file__).parent
-        html_templates = cwd / "templates"
-        static_files = cwd / "static"
-
-        uvicorn.run(
-            "main:app",
-            host="0.0.0.0",
-            port=8000,
-            reload=True,
-            reload_dirs=[
-                html_templates.as_posix(), 
-                static_files.as_posix(),
-                cwd.as_posix()
-            ]
-        )
-
-    else:
-        uvicorn.run(
-            "main:app",
-            host="0.0.0.0",
-            port=8000,
-            reload=False
-        )
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        reload_dirs=[
+            html_templates.as_posix(), 
+            static_files.as_posix(),
+            cwd.as_posix()
+        ]
+    )
