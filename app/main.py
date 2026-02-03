@@ -22,6 +22,7 @@ if DATABASE.is_file():
     print(f"Database {DATABASE} already exists. Moving on...")
 else:
     print(f"Creating new database file: {DATABASE}...")
+    DATABASE.parent.mkdir(parents=True, exist_ok=True)
     db.initiate_db()
     print("Database created.")
 
