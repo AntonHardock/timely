@@ -229,6 +229,7 @@ def sap_report(
         for row_key in row_keys:
             row = dict()
             row["label"] = row_labels.get(row_key, row_key) # row_key is default if no label was set
+            if decimal_hours == True: row["label"] = row["label"].replace("minutes", "hours")
             row["highlighted"] = True if row_key in highlighted_rows else False
             row["values"] = [d[row_key] for d in week_data]
             rows.append(row)
