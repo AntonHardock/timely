@@ -39,7 +39,7 @@ def parse_calendar_events(file:BinaryIO, min_date:dt.date, max_date:dt.date) -> 
 
         # parse categories
         categories = row["Kategorien"]
-        if categories == "":
+        if categories == "" or categories is None:
             categories = "outlook_default"
         row["categories"] = json.dumps(categories.split(";"))
 
