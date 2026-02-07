@@ -9,6 +9,8 @@ version = "0.1.0"
 
 [dependencies]
 python = "==3.10.14"
+
+[pypi-dependencies]
 fastapi = "==0.103"
 python-multipart = "==0.0.20"
 pydantic = "==2.5.3"
