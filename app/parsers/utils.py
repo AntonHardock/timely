@@ -8,7 +8,13 @@ def csv_dict_reader(file:BinaryIO, encoding:str="utf-8-sig", sep:str=";") -> lis
 
     decoded = (line.decode(encoding) for line in file)    
     reader = csv.DictReader(decoded, delimiter=sep)
-    rows = [{k.strip():v.strip() for k,v in row.items()} for row in reader]
+    rows = list(reader)
+
+    for row in rows:
+        for k,v in row.items():
+            k.strip()
+            if v is not None: v.strip()
+        
     return rows
 
 
