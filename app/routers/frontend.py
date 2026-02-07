@@ -132,7 +132,9 @@ def import_file_rejected(request:Request, cache_id:UUID, min_date:date, max_date
 
 
 @router.get("/sap/monthly_report", response_class=HTMLResponse)
-def sap_report(request: Request, month:int, year:int, decimal_hours:bool | None = None):
+def sap_report(
+    request: Request, month:int, year:int, 
+    decimal_hours:bool | None = None, decimal_comma:bool | None = None):
     
     """        
     Aggregates time spent by cost_units for given month and year.
@@ -164,6 +166,7 @@ def sap_report(request: Request, month:int, year:int, decimal_hours:bool | None 
     # flag if data is empty to adjust html output
     empty_data = True if len(data) == 0 else False
 
+
     # calculate decimal hours, always rounding off to 2 decimal places
     if decimal_hours == True:
         for row in data:
@@ -171,6 +174,8 @@ def sap_report(request: Request, month:int, year:int, decimal_hours:bool | None 
                 if isinstance(v, int):
                     number = Decimal(v / 60)
                     number = number.quantize(Decimal('0.01'), rounding=ROUND_FLOOR)
+                    if decimal_comma == True:
+                        number = str(number).replace(".", ",")
                     row[k] = number
 
     # add calendar week for each date
