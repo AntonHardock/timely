@@ -22,7 +22,6 @@ class CostUnit(BaseModel):
 class MainConfig(BaseModel):
     database_name: str = Field(pattern=r".*\.sqlite3$")
     database_path: str
-    run_in_dev_mode: bool
     cost_units: dict[str, CostUnit]
 
     @model_validator(mode="after")
