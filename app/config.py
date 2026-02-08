@@ -17,17 +17,14 @@ def parse_config() -> MainConfig:
     return config
 
 
-def get_static_resource_root() -> Path:
-    """adjust PROJECT_ROOT path for static resource folders when run as pyinstaller bundle
+def get_root_path() -> Path:
+    """returns the root path of the project and modifies it when run as pyinstaller bundle
         see https://pyinstaller.org/en/stable/runtime-information.html#using-file 
     """
 
-    static_resource_path = PROJECT_ROOT
+    root_path = PROJECT_ROOT
 
     if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-        print('Running in a PyInstaller bundle. Setting static_resource_path accordingly...')
-        static_resource_path = Path(sys._MEIPASS)
-    else:
-        print('Running in a normal Python process')
+        root_path = Path(sys._MEIPASS)
 
-    return static_resource_path
+    return root_path
