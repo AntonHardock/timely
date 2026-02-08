@@ -6,7 +6,7 @@ from fastapi.responses import HTMLResponse
 from datetime import date
 import random
 from calendar import monthrange
-from app.config import parse_config, get_static_resource_root
+from app.config import parse_config, get_root_path
 from app.routers.agg_time_by_cost_unit import agg_time_by_cost_unit
 import app.database.db as db
 from app.models import EZeitDay, Event, EventSources as EVS
@@ -17,10 +17,10 @@ CONFIG = parse_config()
 
 router = APIRouter()
 
-static_resource_root = get_static_resource_root()
-router.mount("/static", StaticFiles(directory=(static_resource_root / "static")), name="static")
-router.mount("/javascript", StaticFiles(directory=(static_resource_root / "javascript")), name="javascript")
-templates = Jinja2Templates(directory = (static_resource_root / "templates"))
+root_path = get_root_path()
+router.mount("/static", StaticFiles(directory=(root_path / "static")), name="static")
+router.mount("/javascript", StaticFiles(directory=(root_path / "javascript")), name="javascript")
+templates = Jinja2Templates(directory = (root_path / "templates"))
 
 
 @router.get("/", response_class=HTMLResponse)

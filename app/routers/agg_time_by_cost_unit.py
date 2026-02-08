@@ -5,7 +5,7 @@ from datetime import date
 
 from app.models import EventSources, Event
 import app.database.sqlite_operations as sql_ops
-from app.config import parse_config, get_static_resource_root
+from app.config import parse_config, get_root_path
 
 router = APIRouter(prefix="/api")
 
@@ -13,7 +13,7 @@ router = APIRouter(prefix="/api")
 CONFIG = parse_config()
 
 # get root for resources
-static_resource_root = get_static_resource_root()
+root_path = get_root_path()
 
 @router.get(f"/agg_time_by_cost_unit") 
 def agg_time_by_cost_unit(from_date:date, to_date:date) -> list[dict]:
@@ -39,7 +39,7 @@ def agg_time_by_cost_unit(from_date:date, to_date:date) -> list[dict]:
         )
 
     # read corresponding sql template
-    template_filepath = static_resource_root / "app/routers/agg_time_by_cost_unit.sql"
+    template_filepath = root_path / "app/routers/agg_time_by_cost_unit.sql"
     with open(template_filepath,  "r", encoding="utf-8") as f:
         sql_template = f.read()
 

@@ -5,7 +5,7 @@ import uvicorn
 import sys
 sys.path.append(Path(__file__).parents[1].as_posix())
 
-from app.config import parse_config, get_static_resource_root
+from app.config import parse_config, get_root_path
 from app.routers import agg_time_by_cost_unit, frontend, import_files, rest
 from app.database import db
 
@@ -34,9 +34,9 @@ db.clean_cache_by_age(MAX_AGE_IN_MINUTES)
 # instantiate api entrypoint, static resources and routers
 app = FastAPI()
 
-static_resource_root = get_static_resource_root()
-app.mount("/static", StaticFiles(directory=(static_resource_root / "static")), name="static")
-app.mount("/javascript", StaticFiles(directory=(static_resource_root / "javascript")), name="javascript")
+root_path = get_root_path()
+app.mount("/static", StaticFiles(directory=(root_path / "static")), name="static")
+app.mount("/javascript", StaticFiles(directory=(root_path / "javascript")), name="javascript")
 
 app.include_router(agg_time_by_cost_unit.router)
 app.include_router(import_files.router)
