@@ -5,12 +5,15 @@ from datetime import date
 
 from app.models import EventSources, Event
 import app.database.sqlite_operations as sql_ops
-from app.config import parse_config
+from app.config import parse_config, get_static_resource_root
 
 router = APIRouter(prefix="/api")
 
 # unpack important constants from config
 CONFIG = parse_config()
+
+# get root for resources
+static_resource_root = get_static_resource_root()
 
 @router.get(f"/agg_time_by_cost_unit") 
 def agg_time_by_cost_unit(from_date:date, to_date:date) -> list[dict]:
@@ -36,7 +39,8 @@ def agg_time_by_cost_unit(from_date:date, to_date:date) -> list[dict]:
         )
 
     # read corresponding sql template
-    with open("app/routers/agg_time_by_cost_unit.sql", "r", encoding="utf-8") as f:
+    template_filepath = static_resource_root / "app/routers/agg_time_by_cost_unit.sql"
+    with open(template_filepath,  "r", encoding="utf-8") as f:
         sql_template = f.read()
 
     # insert dynamic sql statements based on cost units in configuration
