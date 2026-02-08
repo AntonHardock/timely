@@ -6,7 +6,6 @@ a = Analysis(
     binaries=[],
     datas=[
         ('configs', 'configs'),
-        ('db', 'db'),
         ('static', 'static'),
         ('javascript', 'javascript'),
         ('templates', 'templates'),
